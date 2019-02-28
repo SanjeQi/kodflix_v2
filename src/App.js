@@ -17,7 +17,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            New Kodflix app
+            Welcome to Kodflix_v2
           </a>
         </header>
       </div>

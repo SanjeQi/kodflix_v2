@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-// import seinfeld from "./covers/seinfeld.jpg";
+import bad from "./covers/bad.jpg";
+import black from "./covers/black.jpg";
+import got from "./covers/got.jpg";
+import kill from "./covers/kill.jpg";
+import sein from "./covers/sein.jpg";
+import wire from "./covers/wire.jpg";
+
 import "./App.css";
 
 class App extends Component {
@@ -8,25 +14,25 @@ class App extends Component {
       <div className="App">
         <div className="image-cover-row">
           <div className="image-cover-row-item">
-            <h1>Black Mirror</h1>
+            <img src={black} alt="black" />
           </div>
           <div className="image-cover-row-item">
-            <h1>Breaking Bad</h1>
+            <img src={got} alt="got" />
           </div>
           <div className="image-cover-row-item">
-            <h1>Seinfeld</h1>
+            <img src={bad} alt="bad" />
           </div>
         </div>
 
         <div className="image-cover-row">
           <div className="image-cover-row-item">
-            <h1>Games of Thrones</h1>
+            <img src={kill} alt="kill" />
           </div>
           <div className="image-cover-row-item">
-            <h1>Generation Kill</h1>
+            <img src={sein} alt="sein" />
           </div>
           <div className="image-cover-row-item">
-            <h1>The Wire</h1>
+            <img src={wire} alt="wire" />
           </div>
         </div>
       </div>

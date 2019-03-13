@@ -7,7 +7,7 @@ class Details extends React.Component {
       <div>
         <h1>
           Hello, this is the detail page for each TV Show. Under construction .
-          Please return at a alter date
+          Please return at a later date
         </h1>
         <Link to="/">Go Back to HomePage</Link>
       </div>

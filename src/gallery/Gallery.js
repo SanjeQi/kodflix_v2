@@ -15,15 +15,15 @@ class Gallery extends React.Component {
     return (
       <div className="gallery">
         <div className="gallery-row">
-          <Cover image={black} title={"Black Mirror"} />
-          <Cover image={got} title={"Games of Thrones"} />
-          <Cover image={bad} title={"Breaking Bad"} />
+          <Cover image={black} id="black" title={"Black Mirror"} />
+          <Cover image={got} id="got" title={"Games of Thrones"} />
+          <Cover image={bad} id="bad" title={"Breaking Bad"} />
         </div>
 
         <div className="gallery-row">
-          <Cover image={kill} title={"Generation Kill"} />
-          <Cover image={sein} title={"Seinfeld"} />
-          <Cover image={wire} title={"The Wire"} />
+          <Cover image={kill} id="kill" title={"Generation Kill"} />
+          <Cover image={sein} id="sein" title={"Seinfeld"} />
+          <Cover image={wire} id="wire" title={"The Wire"} />
         </div>
       </div>
     );

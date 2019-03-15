@@ -14,17 +14,12 @@ class Gallery extends React.Component {
   render() {
     return (
       <div className="gallery">
-        <div className="gallery-row">
-          <Cover image={black} id="black" title={"Black Mirror"} />
-          <Cover image={got} id="got" title={"Games of Thrones"} />
-          <Cover image={bad} id="bad" title={"Breaking Bad"} />
-        </div>
-
-        <div className="gallery-row">
-          <Cover image={kill} id="kill" title={"Generation Kill"} />
-          <Cover image={sein} id="sein" title={"Seinfeld"} />
-          <Cover image={wire} id="wire" title={"The Wire"} />
-        </div>
+        <Cover image={black} id="black" title={"Black Mirror"} />
+        <Cover image={got} id="got" title={"Games of Thrones"} />
+        <Cover image={bad} id="bad" title={"Breaking Bad"} />
+        <Cover image={kill} id="kill" title={"Generation Kill"} />
+        <Cover image={sein} id="sein" title={"Seinfeld"} />
+        <Cover image={wire} id="wire" title={"The Wire"} />
       </div>
     );
   }

@@ -1,20 +1,19 @@
 import React from "react";
-
-import Cover from "./cover/Cover";
 import "./Gallery.css";
-import getGallery from "./gallery-get.js";
+import Cover from "./cover/Cover";
+import getShows from "../shows";
 
 class Gallery extends React.Component {
   render() {
     return (
       <div className="gallery">
-        {getGallery().map(cover => {
+        {getShows().map(show => {
           return (
             <Cover
-              image={cover.image}
-              key={cover.id}
-              id={cover.id}
-              title={cover.title_text}
+              image={show.image}
+              key={show.id}
+              id={show.id}
+              title={show.title}
             />
           );
         })}

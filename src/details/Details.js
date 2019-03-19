@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import getShows from "../shows";
-// import "./Details.css";
+import "./Details.css";
 
 class Details extends React.Component {
   constructor() {
@@ -19,11 +19,10 @@ class Details extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <h1>{this.state.show.title}</h1>
-        <Link to="/">Go Back to HomePage</Link>
-      </div>
+    return this.state.show ? (
+      <h1>{this.state.show.title}</h1>
+    ) : (
+      <Redirect to="/not-found" />
     );
   }
 }

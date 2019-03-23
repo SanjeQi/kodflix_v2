@@ -1,3 +1,6 @@
-.App {
+body {
   text-align: center;
+  background-color: #111317;
+  color: white;
+  min-height: 100%;
 }

@@ -27,7 +27,7 @@ class Details extends React.Component {
             {this.state.show.synopsis}
           </h3>
           <div className="detail-content-cover">
-            <img src={this.state.show.image} />
+            <img src={this.state.show.image} alt={this.state.show.name} />
           </div>
         </div>
       </div>

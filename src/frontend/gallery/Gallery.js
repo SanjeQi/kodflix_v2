@@ -4,6 +4,12 @@ import Cover from "./cover/Cover";
 import getShows from "../shows";
 
 class Gallery extends React.Component {
+  componentDidMount() {
+    fetch("rest/shows")
+      .then(res => res.json())
+      .then(data => console.log(`Fetched from  backend`, data));
+  }
+
   render() {
     return (
       <div className="gallery">

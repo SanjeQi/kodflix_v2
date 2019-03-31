@@ -1,14 +1,15 @@
 import React from "react";
-import "./Cover.css";
 import { Link } from "react-router-dom";
+import "./Cover.css";
 
 export default class Cover extends React.Component {
   render() {
+    let { id, title } = this.props;
     return (
-      <Link to={`/${this.props.id}`} className="cover">
-        <img src={this.props.image} alt="" />
+      <Link to={`/${id}`} className="cover">
+        <img src={require(`../../common/images/${id}.jpg`)} alt={title} />
         <div className="cover-overlay">
-          <h1>{this.props.title}</h1>
+          <h1>{title}</h1>
         </div>
       </Link>
     );

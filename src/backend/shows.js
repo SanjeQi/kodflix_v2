@@ -8,20 +8,20 @@ module.exports = function getShows() {
             humanity's greatest innovations and darkest instincts collide.`
     },
     {
-      id: "got",
-      title: "Games of Thrones",
-      synopsis: `
-            Nine noble families fight for control over the mythical lands of 
-            Westeros, while an ancient enemy returns after being dormant 
-            for thousands of years.`
-    },
-    {
       id: "bad",
       title: "Breaking Bad",
       synopsis: `
             A high school chemistry teacher diagnosed with inoperable 
             lung cancer turns to manufacturing and selling methamphetamine 
             in order to secure his family's future.`
+    },
+    {
+      id: "got",
+      title: "Games of Thrones",
+      synopsis: `
+            Nine noble families fight for control over the mythical lands of 
+            Westeros, while an ancient enemy returns after being dormant 
+            for thousands of years.`
     },
     {
       id: "kill",
@@ -32,12 +32,20 @@ module.exports = function getShows() {
               assault on Baghdad in 2003`
     },
     {
-      id: "sein",
-      title: "Seinfeld",
+      id: "mad",
+      title: "Mad Men",
       synopsis: `
-              The continuing misadventures of neurotic New York City 
-              stand-up comedian Jerry Seinfeld and his equally neurotic 
-              New York City friends.`
+              A drama about one of New York's most prestigious ad agencies 
+              at the beginning of the 1960s, focusing on one of the firm's 
+              most mysterious but extremely talented ad executives, Donald Draper`
+    },
+    {
+      id: "true",
+      title: "True Detective",
+      synopsis: `
+              Seasonal anthology series in which police investigations 
+              unearth the personal and professional secrets of those involved, 
+              both within and outside the law.`
     },
     {
       id: "wire",
@@ -45,6 +53,14 @@ module.exports = function getShows() {
       synopsis: `
               Baltimore drug scene, seen through the eyes of drug 
               dealers and law enforcement.`
+    },
+    {
+      id: "sein",
+      title: "Seinfeld",
+      synopsis: `
+              The continuing misadventures of neurotic New York City 
+              stand-up comedian Jerry Seinfeld and his equally neurotic 
+              New York City friends.`
     }
   ];
 };

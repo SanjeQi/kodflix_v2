@@ -10,13 +10,10 @@ export default class Details extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/rest/shows")
-      .then(response => response.json())
-      .then(shows => {
-        let showId = this.props.match.params.showId;
-        let show = shows.find(show => show.id === showId);
-        this.setState({ show });
-      });
+    let showId = this.props.match.params.showId;
+    fetch(`/rest/shows/${showId}`)
+      .then(res => res.json())
+      .then(show => this.setState({ show }));
   }
 
   render() {

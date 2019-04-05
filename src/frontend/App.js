@@ -1,25 +1,26 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 
 import Gallery from "./gallery/Gallery";
 import Details from "./details/Details";
 import NotFound from "./not-found/NotFound";
+import Menu from "./common/menu/Menu";
+
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Switch>
-            <Route exact path="/" component={Gallery} />
-            <Route path="/not-found" component={NotFound} />
-            <Route exact path="/:showId" component={Details} />
-          </Switch>
-        </div>
-      </Router>
+      <div className="App">
+        <Menu />
+        <Switch>
+          <Route exact path="/" component={Gallery} />
+          <Route path="/not-found" component={NotFound} />
+          <Route path="/:showId" component={Details} />
+        </Switch>
+      </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

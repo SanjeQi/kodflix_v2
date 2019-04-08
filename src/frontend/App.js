@@ -5,6 +5,7 @@ import Gallery from "./gallery/Gallery";
 import Details from "./details/Details";
 import NotFound from "./not-found/NotFound";
 import Menu from "./common/menu/Menu";
+import ManageTvShows from "./manage-tv-shows/ManageTvShows";
 
 import "./App.css";
 
@@ -15,6 +16,7 @@ class App extends Component {
         <Menu />
         <Switch>
           <Route exact path="/" component={Gallery} />
+          <Route path="/manage/tv-shows" component={ManageTvShows} />
           <Route path="/not-found" component={NotFound} />
           <Route path="/:showId" component={Details} />
         </Switch>

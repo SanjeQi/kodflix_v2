@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import "./Details.css";
 import Loading from "../common/loading/Loading";
+import "./Details.css";
 
 export default class Details extends React.Component {
   constructor() {
@@ -12,7 +12,7 @@ export default class Details extends React.Component {
   componentDidMount() {
     let showId = this.props.match.params.showId;
     fetch(`/rest/shows/${showId}`)
-      .then(res => res.json())
+      .then(response => response.json())
       .then(show => this.setState({ show }));
   }
 
@@ -28,16 +28,17 @@ export default class Details extends React.Component {
 
 function DetailsContent({ show }) {
   return (
-    <div className="details">
-      <h1>{show.title}</h1>
+    <div
+      className="details"
+      style={{
+        backgroundImage: `url(${require(`../common/images/wallpapers/${
+          show.id
+        }.jpg`)})`
+      }}
+    >
       <div className="details-content">
+        <h1 className="details-content-title">{show.title}</h1>
         <h3 className="details-content-synopsis">{show.synopsis}</h3>
-        <div className="details-content-cover">
-          <img
-            src={require(`../common/images/${show.id}.jpg`)}
-            alt={show.title}
-          />
-        </div>
       </div>
     </div>
   );

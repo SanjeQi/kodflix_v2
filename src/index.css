@@ -8,10 +8,9 @@ body {
   padding: 0;
   font-family: sans-serif;
   height: 100%;
-  /* overflow-y: auto; */
-  overflow: hidden;
+  overflow-y: auto;
   text-align: center;
-  background-color: black;
+  background-color: #2f333d;
   color: white;
 }
 
@@ -27,9 +26,4 @@ h5 {
 a {
   color: white;
   text-decoration: none;
-}
-
-a,
-button {
-  cursor: pointer;
 }

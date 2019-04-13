@@ -1,6 +1,5 @@
 # kodflix_v2
 
-
 This project was bootstrapped with Create React App.
 
 Below you will find some information on how to perform common tasks.
@@ -126,19 +125,19 @@ Folder Structure
 After creation, your project should look like this:
 
 my-app/
-  README.md
-  node_modules/
-  package.json
-  public/
-    index.html
-    favicon.ico
-  src/
-    App.css
-    App.js
-    App.test.js
-    index.css
-    index.js
-    logo.svg
+README.md
+node_modules/
+package.json
+public/
+index.html
+favicon.ico
+src/
+App.css
+App.js
+App.test.js
+index.css
+index.js
+logo.svg
 For the project to build, these files must exist with exact filenames:
 
 public/index.html is the page template;
@@ -228,7 +227,7 @@ They are not required for linting. You should see the linter output right in you
 You would need to install an ESLint plugin for your editor first. Then, add a file called .eslintrc to the project root:
 
 {
-  "extends": "react-app"
+"extends": "react-app"
 }
 Now your editor should report the linting warnings.
 
@@ -247,17 +246,17 @@ You would need to have the latest version of VS Code and VS Code Chrome Debugger
 Then add the block below to your launch.json file and put it inside the .vscode folder in your app’s root directory.
 
 {
-  "version": "0.2.0",
-  "configurations": [{
-    "name": "Chrome",
-    "type": "chrome",
-    "request": "launch",
-    "url": "http://localhost:3000",
-    "webRoot": "${workspaceRoot}/src",
-    "sourceMapPathOverrides": {
-      "webpack:///src/*": "${webRoot}/*"
-    }
-  }]
+"version": "0.2.0",
+"configurations": [{
+"name": "Chrome",
+"type": "chrome",
+"request": "launch",
+"url": "http://localhost:3000",
+"webRoot": "${workspaceRoot}/src",
+"sourceMapPathOverrides": {
+"webpack:///src/*": "${webRoot}/*"
+}
+}]
 }
 Note: the URL may be different if you've made adjustments via the HOST or PORT environment variables.
 
@@ -292,23 +291,25 @@ Now we can make sure every file is formatted correctly by adding a few lines to 
 
 Add the following line to scripts section:
 
-  "scripts": {
-+   "precommit": "lint-staged",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-Next we add a 'lint-staged' field to the package.json, for example:
+"scripts": {
 
-  "dependencies": {
-    // ...
-  },
-+ "lint-staged": {
-+   "src/**/*.{js,jsx,json,css}": [
-+     "prettier --single-quote --write",
-+     "git add"
-+   ]
-+ },
+- "precommit": "lint-staged",
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  Next we add a 'lint-staged' field to the package.json, for example:
+
+"dependencies": {
+// ...
+},
+
+- "lint-staged": {
+- "src/\*_/_.{js,jsx,json,css}": [
+-     "prettier --single-quote --write",
+-     "git add"
+- ]
+- },
   "scripts": {
-Now, whenever you make a commit, Prettier will format the changed files automatically. You can also run ./node_modules/.bin/prettier --single-quote --write "src/**/*.{js,jsx,json,css}" to format your entire project for the first time.
+  Now, whenever you make a commit, Prettier will format the changed files automatically. You can also run ./node*modules/.bin/prettier --single-quote --write "src/\**/\_.{js,jsx,json,css}" to format your entire project for the first time.
 
 Next you might want to integrate Prettier in your favorite editor. Read the section on Editor Integration on the Prettier GitHub page.
 
@@ -340,9 +341,9 @@ Button.js
 import React, { Component } from 'react';
 
 class Button extends Component {
-  render() {
-    // ...
-  }
+render() {
+// ...
+}
 }
 
 export default Button; // Don’t forget to use export default!
@@ -351,9 +352,9 @@ import React, { Component } from 'react';
 import Button from './Button'; // Import a component from another file
 
 class DangerButton extends Component {
-  render() {
-    return <Button color="red" />;
-  }
+render() {
+return <Button color="red" />;
+}
 }
 
 export default DangerButton;
@@ -383,23 +384,24 @@ App.js
 import React, { Component } from 'react';
 
 class App extends Component {
-  handleClick = () => {
-    import('./moduleA')
-      .then(({ moduleA }) => {
-        // Use moduleA
-      })
-      .catch(err => {
-        // Handle failure
-      });
-  };
+handleClick = () => {
+import('./moduleA')
+.then(({ moduleA }) => {
+// Use moduleA
+})
+.catch(err => {
+// Handle failure
+});
+};
 
-  render() {
-    return (
-      <div>
-        <button onClick={this.handleClick}>Load</button>
-      </div>
-    );
-  }
+render() {
+return (
+
+<div>
+<button onClick={this.handleClick}>Load</button>
+</div>
+);
+}
 }
 
 export default App;
@@ -417,17 +419,17 @@ This project setup uses Webpack for handling all assets. Webpack offers a custom
 
 Button.css
 .Button {
-  padding: 20px;
+padding: 20px;
 }
 Button.js
 import React, { Component } from 'react';
 import './Button.css'; // Tell Webpack that Button.js uses these styles
 
 class Button extends Component {
-  render() {
-    // You can use them as regular CSS styles
-    return <div className="Button" />;
-  }
+render() {
+// You can use them as regular CSS styles
+return <div className="Button" />;
+}
 }
 This is not required for React but many people find this feature convenient. You can read about the benefits of this approach here. However you should be aware that this makes your code less portable to other build tools and environments than Webpack.
 
@@ -441,23 +443,23 @@ This project setup minifies your CSS and adds vendor prefixes to it automaticall
 For example, this:
 
 .App {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+display: flex;
+flex-direction: row;
+align-items: center;
 }
 becomes this:
 
 .App {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;
+-ms-flex-direction: row;
+flex-direction: row;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
 }
 If you need to disable autoprefixing for some reason, follow this section.
 
@@ -474,13 +476,14 @@ Alternatively you may use yarn:
 yarn add node-sass-chokidar
 Then in package.json, add the following lines to scripts:
 
-   "scripts": {
-+    "build-css": "node-sass-chokidar src/ -o src/",
-+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-     "start": "react-scripts start",
-     "build": "react-scripts build",
-     "test": "react-scripts test --env=jsdom",
-Note: To use a different preprocessor, replace build-css and watch-css commands according to your preprocessor’s documentation.
+"scripts": {
+
+- "build-css": "node-sass-chokidar src/ -o src/",
+- "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test --env=jsdom",
+  Note: To use a different preprocessor, replace build-css and watch-css commands according to your preprocessor’s documentation.
 
 Now you can rename src/App.css to src/App.scss and run npm run watch-css. The watcher will find every Sass file in src subdirectories, and create a corresponding CSS file next to it, in our case overwriting src/App.css. Since src/App.js still imports src/App.css, the styles become a part of your application. You can now edit src/App.scss, and src/App.css will be regenerated.
 
@@ -492,9 +495,9 @@ To enable importing files without using relative paths, you can add the --includ
 "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
 This will allow you to do imports like
 
-@import 'styles/_colors.scss'; // assuming a styles directory under src/
+@import 'styles/\_colors.scss'; // assuming a styles directory under src/
 @import 'nprogress/nprogress'; // importing a css file from the nprogress node module
-At this point you might want to remove all CSS files from the source control, and add src/**/*.css to your .gitignore file. It is generally a good practice to keep the build products outside of the source control.
+At this point you might want to remove all CSS files from the source control, and add src/\*_/_.css to your .gitignore file. It is generally a good practice to keep the build products outside of the source control.
 
 As a final step, you may find it convenient to run watch-css automatically with npm start, and run build-css as a part of npm run build. You can use the && operator to execute two scripts sequentially. However, there is no cross-platform way to run two scripts in parallel, so we will install a package for this:
 
@@ -504,19 +507,21 @@ Alternatively you may use yarn:
 yarn add npm-run-all
 Then we can change start and build scripts to include the CSS preprocessor commands:
 
-   "scripts": {
-     "build-css": "node-sass-chokidar src/ -o src/",
-     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
--    "start": "react-scripts start",
--    "build": "react-scripts build",
-+    "start-js": "react-scripts start",
-+    "start": "npm-run-all -p watch-css start-js",
-+    "build-js": "react-scripts build",
-+    "build": "npm-run-all build-css build-js",
-     "test": "react-scripts test --env=jsdom",
-     "eject": "react-scripts eject"
-   }
-Now running npm start and npm run build also builds Sass files.
+"scripts": {
+"build-css": "node-sass-chokidar src/ -o src/",
+"watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+
+- "start": "react-scripts start",
+- "build": "react-scripts build",
+
+* "start-js": "react-scripts start",
+* "start": "npm-run-all -p watch-css start-js",
+* "build-js": "react-scripts build",
+* "build": "npm-run-all build-css build-js",
+  "test": "react-scripts test --env=jsdom",
+  "eject": "react-scripts eject"
+  }
+  Now running npm start and npm run build also builds Sass files.
 
 Why node-sass-chokidar?
 
@@ -545,8 +550,8 @@ import logo from './logo.png'; // Tell Webpack this JS file uses this image
 console.log(logo); // /logo.84287d09.png
 
 function Header() {
-  // Import result is the URL of your image
-  return <img src={logo} alt="Logo" />;
+// Import result is the URL of your image
+return <img src={logo} alt="Logo" />;
 }
 
 export default Header;
@@ -555,7 +560,7 @@ This ensures that when the project is built, Webpack will correctly move the ima
 This works in CSS too:
 
 .Logo {
-  background-image: url(./logo.png);
+background-image: url(./logo.png);
 }
 Webpack finds all relative module references in CSS (they start with ./) and replaces them with the final paths from the compiled bundle. If you make a typo or accidentally delete an important file, you will see a compilation error, just like when you import a non-existent JavaScript module. The final filenames in the compiled bundle are generated by Webpack from content hashes. If the file content changes in the future, Webpack will give it a different name in production so you don’t need to worry about long-term caching of assets.
 
@@ -592,10 +597,10 @@ When you run npm run build, Create React App will substitute %PUBLIC_URL% with a
 In JavaScript code, you can use process.env.PUBLIC_URL for similar purposes:
 
 render() {
-  // Note: this is an escape hatch and should be used sparingly!
-  // Normally we recommend using `import` for getting asset URLs
-  // as described in “Adding Images and Fonts” above this section.
-  return <img src={process.env.PUBLIC_URL + '/img/logo.png'} />;
+// Note: this is an escape hatch and should be used sparingly!
+// Normally we recommend using `import` for getting asset URLs
+// as described in “Adding Images and Fonts” above this section.
+return <img src={process.env.PUBLIC_URL + '/img/logo.png'} />;
 }
 Keep in mind the downsides of this approach:
 
@@ -681,11 +686,11 @@ Note that you may need to configure your production server to support client-sid
 Adding Custom Environment Variables
 Note: this feature is available with react-scripts@0.2.3 and higher.
 
-Your project can consume variables declared in your environment as if they were declared locally in your JS files. By default you will have NODE_ENV defined for you, and any other environment variables starting with REACT_APP_.
+Your project can consume variables declared in your environment as if they were declared locally in your JS files. By default you will have NODE*ENV defined for you, and any other environment variables starting with REACT_APP*.
 
 The environment variables are embedded during the build time. Since Create React App produces a static HTML/CSS/JS bundle, it can’t possibly read them at runtime. To read them at runtime, you would need to load HTML into memory on the server and replace placeholders in runtime, just like described here. Alternatively you can rebuild the app on the server anytime you change them.
 
-Note: You must create custom environment variables beginning with REACT_APP_. Any other variables except NODE_ENV will be ignored to avoid accidentally exposing a private key on the machine that could have the same name. Changing any environment variables will require you to restart the development server if it is running.
+Note: You must create custom environment variables beginning with REACT*APP*. Any other variables except NODE_ENV will be ignored to avoid accidentally exposing a private key on the machine that could have the same name. Changing any environment variables will require you to restart the development server if it is running.
 
 These environment variables will be defined for you on process.env. For example, having an environment variable named REACT_APP_SECRET_CODE will be exposed in your JS as process.env.REACT_APP_SECRET_CODE.
 
@@ -696,14 +701,15 @@ These environment variables can be useful for displaying information conditional
 First, you need to have environment variables defined. For example, let’s say you wanted to consume a secret defined in the environment inside a <form>:
 
 render() {
-  return (
-    <div>
-      <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
-      <form>
-        <input type="hidden" defaultValue={process.env.REACT_APP_SECRET_CODE} />
-      </form>
-    </div>
-  );
+return (
+
+<div>
+<small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
+<form>
+<input type="hidden" defaultValue={process.env.REACT_APP_SECRET_CODE} />
+</form>
+</div>
+);
 }
 During the build, process.env.REACT_APP_SECRET_CODE will be replaced with the current value of the REACT_APP_SECRET_CODE environment variable. Remember that the NODE_ENV variable will be set for you automatically.
 
@@ -720,19 +726,19 @@ The above form is looking for a variable called REACT_APP_SECRET_CODE from the e
 Having access to the NODE_ENV is also useful for performing actions conditionally:
 
 if (process.env.NODE_ENV !== 'production') {
-  analytics.disable();
+analytics.disable();
 }
 When you compile the app with npm run build, the minification step will strip out this condition, and the resulting bundle will be smaller.
 
 Referencing Environment Variables in the HTML
 Note: this feature is available with react-scripts@0.9.0 and higher.
 
-You can also access the environment variables starting with REACT_APP_ in the public/index.html. For example:
+You can also access the environment variables starting with REACT*APP* in the public/index.html. For example:
 
 <title>%REACT_APP_WEBSITE_NAME%</title>
 Note that the caveats from the above section apply:
 
-Apart from a few built-in variables (NODE_ENV and PUBLIC_URL), variable names must start with REACT_APP_ to work.
+Apart from a few built-in variables (NODE*ENV and PUBLIC_URL), variable names must start with REACT_APP* to work.
 The environment variables are injected at build time. If you need to inject them at runtime, follow this approach instead.
 Adding Temporary Environment Variables In Your Shell
 Defining environment variables can vary between OSes. It’s also important to know that this manner is temporary for the life of the shell session.
@@ -742,7 +748,7 @@ set "REACT_APP_SECRET_CODE=abcdef" && npm start
 (Note: Quotes around the variable assignment are required to avoid a trailing whitespace.)
 
 Windows (Powershell)
-($env:REACT_APP_SECRET_CODE = "abcdef") -and (npm start)
+(\$env:REACT_APP_SECRET_CODE = "abcdef") -and (npm start)
 Linux, macOS (Bash)
 REACT_APP_SECRET_CODE=abcdef npm start
 Adding Development Environment Variables In .env
@@ -750,10 +756,10 @@ Note: this feature is available with react-scripts@0.5.0 and higher.
 
 To define permanent environment variables, create a file called .env in the root of your project:
 
-REACT_APP_SECRET_CODE=abcdef
-Note: You must create custom environment variables beginning with REACT_APP_. Any other variables except NODE_ENV will be ignored to avoid accidentally exposing a private key on the machine that could have the same name. Changing any environment variables will require you to restart the development server if it is running.
+REACT*APP_SECRET_CODE=abcdef
+Note: You must create custom environment variables beginning with REACT_APP*. Any other variables except NODE_ENV will be ignored to avoid accidentally exposing a private key on the machine that could have the same name. Changing any environment variables will require you to restart the development server if it is running.
 
-.env files should be checked into source control (with the exclusion of .env*.local).
+.env files should be checked into source control (with the exclusion of .env\*.local).
 
 What other .env files can be used?
 Note: this feature is available with react-scripts@1.0.0 and higher.
@@ -779,9 +785,12 @@ Expand variables already on your machine for use in your .env file (using dotenv
 
 For example, to get the environment variable npm_package_version:
 
-REACT_APP_VERSION=$npm_package_version
+REACT_APP_VERSION=\$npm_package_version
+
 # also works:
-# REACT_APP_VERSION=${npm_package_version}
+
+# REACT_APP_VERSION=\${npm_package_version}
+
 Or expand variables local to the current .env file:
 
 DOMAIN=www.example.com
@@ -825,14 +834,14 @@ Note: this feature is available with react-scripts@0.2.3 and higher.
 People often serve the front-end React app from the same host and port as their backend implementation.
 For example, a production setup might look like this after the app is deployed:
 
-/             - static server returns index.html with React app
-/todos        - static server returns index.html with React app
-/api/todos    - server handles any /api/* requests using the backend implementation
+/ - static server returns index.html with React app
+/todos - static server returns index.html with React app
+/api/todos - server handles any /api/\* requests using the backend implementation
 Such setup is not required. However, if you do have a setup like this, it is convenient to write requests like fetch('/api/todos') without worrying about redirecting them to another host or port during development.
 
 To tell the development server to proxy any unknown requests to your API server in development, add a proxy field to your package.json, for example:
 
-  "proxy": "http://localhost:4000",
+"proxy": "http://localhost:4000",
 This way, when you fetch('/api/todos') in development, the development server will recognize that it’s not a static asset, and will proxy your request to http://localhost:4000/api/todos as a fallback. The development server will only attempt to send requests without text/html in its Accept header to the proxy.
 
 Conveniently, this avoids CORS issues and error messages like this in development:
@@ -861,7 +870,9 @@ If you restart the development server now and load the app from the specified ho
 If you are still having issues or if you’re using a more exotic environment like a cloud editor, you can bypass the host check completely by adding a line to .env.development.local. Note that this is dangerous and exposes your machine to remote code execution from malicious websites:
 
 # NOTE: THIS IS DANGEROUS!
+
 # It exposes your machine to attacks from the websites you visit.
+
 DANGEROUSLY_DISABLE_HOST_CHECK=true
 We don’t recommend this approach.
 
@@ -872,50 +883,50 @@ If the proxy option is not flexible enough for you, you can specify an object in
 You may also specify any configuration value http-proxy-middleware or http-proxy supports.
 
 {
-  // ...
-  "proxy": {
-    "/api": {
-      "target": "<url>",
-      "ws": true
-      // ...
-    }
-  }
-  // ...
+// ...
+"proxy": {
+"/api": {
+"target": "<url>",
+"ws": true
+// ...
+}
+}
+// ...
 }
 All requests matching this path will be proxies, no exceptions. This includes requests for text/html, which the standard proxy option does not proxy.
 
 If you need to specify multiple proxies, you may do so by specifying additional entries. Matches are regular expressions, so that you can use a regexp to match multiple paths.
 
 {
-  // ...
-  "proxy": {
-    // Matches any request starting with /api
-    "/api": {
-      "target": "<url_1>",
-      "ws": true
-      // ...
-    },
-    // Matches any request starting with /foo
-    "/foo": {
-      "target": "<url_2>",
-      "ssl": true,
-      "pathRewrite": {
-        "^/foo": "/foo/beta"
-      }
-      // ...
-    },
-    // Matches /bar/abc.html but not /bar/sub/def.html
-    "/bar/[^/]*[.]html": {
-      "target": "<url_3>",
-      // ...
-    },
-    // Matches /baz/abc.html and /baz/sub/def.html
-    "/baz/.*/.*[.]html": {
-      "target": "<url_4>"
-      // ...
-    }
-  }
-  // ...
+// ...
+"proxy": {
+// Matches any request starting with /api
+"/api": {
+"target": "<url*1>",
+"ws": true
+// ...
+},
+// Matches any request starting with /foo
+"/foo": {
+"target": "<url_2>",
+"ssl": true,
+"pathRewrite": {
+"^/foo": "/foo/beta"
+}
+// ...
+},
+// Matches /bar/abc.html but not /bar/sub/def.html
+"/bar/[^/]*[.]html": {
+"target": "<url*3>",
+// ...
+},
+// Matches /baz/abc.html and /baz/sub/def.html
+"/baz/.*/.\*[.]html": {
+"target": "<url_4>"
+// ...
+}
+}
+// ...
 }
 Configuring a WebSocket Proxy
 When setting up a WebSocket proxy, there are a some extra considerations to be aware of.
@@ -929,19 +940,19 @@ Standard WebSockets will work with a standard WebSocket server as well as the we
 Either way, you can proxy WebSocket requests manually in package.json:
 
 {
-  // ...
-  "proxy": {
-    "/socket": {
-      // Your compatible WebSocket server
-      "target": "ws://<socket_url>",
-      // Tell http-proxy-middleware that this is a WebSocket proxy.
-      // Also allows you to proxy WebSocket requests without an additional HTTP request
-      // https://github.com/chimurai/http-proxy-middleware#external-websocket-upgrade
-      "ws": true
-      // ...
-    }
-  }
-  // ...
+// ...
+"proxy": {
+"/socket": {
+// Your compatible WebSocket server
+"target": "ws://<socket_url>",
+// Tell http-proxy-middleware that this is a WebSocket proxy.
+// Also allows you to proxy WebSocket requests without an additional HTTP request
+// https://github.com/chimurai/http-proxy-middleware#external-websocket-upgrade
+"ws": true
+// ...
+}
+}
+// ...
 }
 Using HTTPS in Development
 Note: this feature is available with react-scripts@0.4.0 and higher.
@@ -1007,12 +1018,12 @@ We recommend that you use a separate tool for browser end-to-end tests if you ne
 Filename Conventions
 Jest will look for test files with any of the following popular naming conventions:
 
-Files with .js suffix in __tests__ folders.
+Files with .js suffix in **tests** folders.
 Files with .test.js suffix.
 Files with .spec.js suffix.
-The .test.js / .spec.js files (or the __tests__ folders) can be located at any depth under the src top level folder.
+The .test.js / .spec.js files (or the **tests** folders) can be located at any depth under the src top level folder.
 
-We recommend to put the test files (or __tests__ folders) next to the code they are testing so that relative imports appear shorter. For example, if App.test.js and App.js are in the same folder, the test just needs to import App from './App' instead of a long relative path. Colocation also helps find tests more quickly in larger projects.
+We recommend to put the test files (or **tests** folders) next to the code they are testing so that relative imports appear shorter. For example, if App.test.js and App.js are in the same folder, the test just needs to import App from './App' instead of a long relative path. Colocation also helps find tests more quickly in larger projects.
 
 Command Line Interface
 When you run npm test, Jest will launch in the watch mode. Every time you save a file, it will re-run the tests, just like npm start recompiles the code.
@@ -1036,8 +1047,8 @@ Jest provides a built-in expect() global function for making assertions. A basic
 import sum from './sum';
 
 it('sums numbers', () => {
-  expect(sum(1, 2)).toEqual(3);
-  expect(sum(2, 2)).toEqual(4);
+expect(sum(1, 2)).toEqual(3);
+expect(sum(2, 2)).toEqual(4);
 });
 All expect() matchers supported by Jest are extensively documented here.
 You can also use jest.fn() and expect(fn).toBeCalled() to create “spies” or mock functions.
@@ -1052,8 +1063,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+const div = document.createElement('div');
+ReactDOM.render(<App />, div);
 });
 This test mounts a component and makes sure that it didn’t throw during rendering. Tests like this provide a lot of value with very little effort so they are great as a starting point, and this is the test you will find in src/App.test.js.
 
@@ -1083,7 +1094,7 @@ import { shallow } from 'enzyme';
 import App from './App';
 
 it('renders without crashing', () => {
-  shallow(<App />);
+shallow(<App />);
 });
 Unlike the previous smoke test using ReactDOM.render(), this test only renders <App> and doesn’t go deeper. For example, even if <App> itself renders a <Button> that throws, this test will pass. Shallow rendering is great for isolated unit tests, but you may still want to create some full rendering tests to ensure the components integrate correctly. Enzyme supports full rendering with mount(), and you can also use it for testing state changes and component lifecycle.
 
@@ -1096,10 +1107,10 @@ import { shallow } from 'enzyme';
 import App from './App';
 
 it('renders welcome message', () => {
-  const wrapper = shallow(<App />);
-  const welcome = <h2>Welcome to React</h2>;
-  // expect(wrapper.contains(welcome)).to.equal(true);
-  expect(wrapper.contains(welcome)).toEqual(true);
+const wrapper = shallow(<App />);
+const welcome = <h2>Welcome to React</h2>;
+// expect(wrapper.contains(welcome)).to.equal(true);
+expect(wrapper.contains(welcome)).toEqual(true);
 });
 All Jest matchers are extensively documented here.
 Nevertheless you can use a third-party assertion library like Chai if you want to, as described below.
@@ -1134,17 +1145,17 @@ For example:
 
 src/setupTests.js
 const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  clear: jest.fn()
+getItem: jest.fn(),
+setItem: jest.fn(),
+clear: jest.fn()
 };
 global.localStorage = localStorageMock
 Note: Keep in mind that if you decide to "eject" before creating src/setupTests.js, the resulting package.json file won't contain any reference to it, so you should manually create the property setupTestFrameworkScriptFile in the configuration for Jest, something like the following:
 
 "jest": {
-  // ...
-  "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
- }
+// ...
+"setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
+}
 Focusing and Excluding Tests
 You can replace it() with xit() to temporarily exclude a test from being executed.
 Similarly, fit() lets you focus on a specific test without running any other tests.
@@ -1169,24 +1180,24 @@ snapshotSerializers
 Example package.json:
 
 {
-  "name": "your-package",
-  "jest": {
-    "collectCoverageFrom" : [
-      "src/**/*.{js,jsx}",
-      "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
-      }
-    },
-    "coverageReporters": ["text"],
-    "snapshotSerializers": ["my-serializer-module"]
-  }
+"name": "your-package",
+"jest": {
+"collectCoverageFrom" : [
+"src/**/*.{js,jsx}",
+"!<rootDir>/node_modules/",
+"!<rootDir>/path/to/dir/"
+],
+"coverageThreshold": {
+"global": {
+"branches": 90,
+"functions": 90,
+"lines": 90,
+"statements": 90
+}
+},
+"coverageReporters": ["text"],
+"snapshotSerializers": ["my-serializer-module"]
+}
 }
 Continuous Integration
 By default npm test runs the watcher with interactive CLI. However, you can force it to run tests once and finish the process by setting an environment variable called CI.
@@ -1201,17 +1212,17 @@ Following the Travis Getting started guide for syncing your GitHub repository wi
 Add a .travis.yml file to your git repository.
 language: node_js
 node_js:
-  - 6
-cache:
-  directories:
-    - node_modules
-script:
-  - npm run build
-  - npm test
-Trigger your first build with a git push.
-Customize your Travis CI Build if needed.
-CircleCI
-Follow this article to set up CircleCI with a Create React App project.
+
+- 6
+  cache:
+  directories: - node_modules
+  script:
+- npm run build
+- npm test
+  Trigger your first build with a git push.
+  Customize your Travis CI Build if needed.
+  CircleCI
+  Follow this article to set up CircleCI with a Create React App project.
 
 On your own environment
 Windows (cmd.exe)
@@ -1234,18 +1245,20 @@ The build command will check for linter warnings and fail if any are found.
 Disabling jsdom
 By default, the package.json of the generated project looks like this:
 
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+"scripts": {
+"start": "react-scripts start",
+"build": "react-scripts build",
+"test": "react-scripts test --env=jsdom"
 If you know that none of your tests depend on jsdom, you can safely remove --env=jsdom, and your tests will run faster:
 
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
--   "test": "react-scripts test --env=jsdom"
-+   "test": "react-scripts test"
-To help you make up your mind, here is a list of APIs that need jsdom:
+"scripts": {
+"start": "react-scripts start",
+"build": "react-scripts build",
+
+- "test": "react-scripts test --env=jsdom"
+
+* "test": "react-scripts test"
+  To help you make up your mind, here is a list of APIs that need jsdom:
 
 Any browser globals like window and document
 ReactDOM.render()
@@ -1274,11 +1287,11 @@ Debugging Tests in Chrome
 Add the following to the scripts section in your project's package.json
 
 "scripts": {
-    "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
-  }
+"test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
+}
 Place debugger; statements in any test and run:
 
-$ npm run test:debug
+\$ npm run test:debug
 This will start running your Jest tests, but pause before executing to allow a debugger to attach to the process.
 
 Open the following in Chrome
@@ -1294,13 +1307,13 @@ Debugging Jest tests is supported out of the box for Visual Studio Code.
 Use the following launch.json configuration file:
 
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug CRA Tests",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",      
+"version": "0.2.0",
+"configurations": [
+{
+"name": "Debug CRA Tests",
+"type": "node",
+"request": "launch",
+"runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",      
       "args": [
         "test",
         "--runInBand",
@@ -1308,11 +1321,11 @@ Use the following launch.json configuration file:
         "--env=jsdom"
       ],
       "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    }
-  ]
+"protocol": "inspector",
+"console": "integratedTerminal",
+"internalConsoleOptions": "neverOpen"
+}
+]
 }
 Developing Components in Isolation
 Usually, in an app, you have a lot of UI components, and each of them has many different states. For an example, a simple button component could have following states:
@@ -1356,11 +1369,12 @@ Alternatively you may use yarn:
 yarn add react-styleguidist
 Then, add these scripts to your package.json:
 
-   "scripts": {
-+    "styleguide": "styleguidist server",
-+    "styleguide:build": "styleguidist build",
-     "start": "react-scripts start",
-Then, run the following command inside your app’s directory:
+"scripts": {
+
+- "styleguide": "styleguidist server",
+- "styleguide:build": "styleguidist build",
+  "start": "react-scripts start",
+  Then, run the following command inside your app’s directory:
 
 npm run styleguide
 After that, follow the instructions on the screen.
@@ -1421,12 +1435,13 @@ Alternatively you may use yarn:
 yarn add source-map-explorer
 Then in package.json, add the following line to scripts:
 
-   "scripts": {
-+    "analyze": "source-map-explorer build/static/js/main.*",
-     "start": "react-scripts start",
-     "build": "react-scripts build",
-     "test": "react-scripts test --env=jsdom",
-Then to analyze the bundle run the production build then run the analyze script.
+"scripts": {
+
+- "analyze": "source-map-explorer build/static/js/main.\*",
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test --env=jsdom",
+  Then to analyze the bundle run the production build then run the analyze script.
 
 npm run build
 npm run analyze
@@ -1452,10 +1467,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(\_\_dirname, 'build')));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+res.sendFile(path.join(\_\_dirname, 'build', 'index.html'));
 });
 
 app.listen(9000);
@@ -1470,18 +1485,19 @@ If you use routers that use the HTML5 pushState history API under the hood (for 
 
 This is because when there is a fresh page load for a /todos/42, the server looks for the file build/todos/42 and does not find it. The server needs to be configured to respond to a request to /todos/42 by serving index.html. For example, we can amend our Express example above to serve index.html for any unknown paths:
 
- app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(\_\_dirname, 'build')));
 
 -app.get('/', function (req, res) {
-+app.get('/*', function (req, res) {
-   res.sendFile(path.join(__dirname, 'build', 'index.html'));
- });
++app.get('/\*', function (req, res) {
+res.sendFile(path.join(\_\_dirname, 'build', 'index.html'));
+});
 If you’re using Apache HTTP Server, you need to create a .htaccess file in the public folder that looks like this:
 
     Options -MultiViews
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.html [QSA,L]
+
 It will get copied to the build folder when you run npm run build.
 
 If you’re using Apache Tomcat, you need to follow this Stack Overflow answer.
@@ -1492,12 +1508,12 @@ On a production build, and in a browser that supports service workers, the servi
 
 When users install your app to the homescreen of their device the default configuration will make a shortcut to /index.html. This may not work for client-side routers which expect the app to be served from /. Edit the web app manifest at public/manifest.json and change start_url to match the required URL scheme, for example:
 
-  "start_url": ".",
+"start_url": ".",
 Building for Relative Paths
 By default, Create React App produces a build assuming your app is hosted at the server root.
 To override this, specify the homepage in your package.json, for example:
 
-  "homepage": "http://mywebsite.com/relativepath",
+"homepage": "http://mywebsite.com/relativepath",
 This will let Create React App correctly infer the root path to use in the generated HTML file.
 
 Note: If you are using react-router@^4, you can root <Link>s using the basename prop on any <Router>.
@@ -1512,7 +1528,7 @@ Note: this feature is available with react-scripts@0.9.0 and higher.
 
 If you are not using the HTML5 pushState history API or not using client-side routing at all, it is unnecessary to specify the URL from which your app will be served. Instead, you can put this in your package.json:
 
-  "homepage": ".",
+"homepage": ".",
 This will make sure that all the asset paths are relative to index.html. You will then be able to move your app from http://mywebsite.com to http://mywebsite.com/relativepath or even http://mywebsite.com/relative/path without having to rebuild it.
 
 Azure
@@ -1557,15 +1573,16 @@ Then run the firebase init command from your project’s root. You need to choos
     i  Writing project information to .firebaserc...
 
     ✔  Firebase initialization complete!
+
 IMPORTANT: you need to set proper HTTP caching headers for service-worker.js file in firebase.json file or you will not be able to see changes after first deployment (issue #2440). It should be added inside "hosting" key like next:
 
 {
-  "hosting": {
-    ...
-    "headers": [
-      {"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
-    ]
-    ...
+"hosting": {
+...
+"headers": [
+{"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
+]
+...
 Now, after you create a production build with npm run build, you can deploy it by running firebase deploy.
 
     === Deploying to 'example-app-fd690'...
@@ -1581,6 +1598,7 @@ Now, after you create a production build with npm run build, you can deploy it b
 
     Project Console: https://console.firebase.google.com/project/example-app-fd690/overview
     Hosting URL: https://example-app-fd690.firebaseapp.com
+
 For more information see Add Firebase to your JavaScript Project.
 
 GitHub Pages
@@ -1592,10 +1610,10 @@ If you skip it, your app will not deploy correctly.
 
 Open your package.json and add a homepage field for your project:
 
-  "homepage": "https://myusername.github.io/my-app",
+"homepage": "https://myusername.github.io/my-app",
 or for a GitHub user page:
 
-  "homepage": "https://myusername.github.io",
+"homepage": "https://myusername.github.io",
 Create React App uses the homepage field to determine the root URL in the built HTML file.
 
 Step 2: Install gh-pages and add deploy to scripts in package.json
@@ -1609,23 +1627,26 @@ Alternatively you may use yarn:
 yarn add gh-pages
 Add the following scripts in your package.json:
 
-  "scripts": {
-+   "predeploy": "npm run build",
-+   "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-The predeploy script will run automatically before deploy is run.
+"scripts": {
+
+- "predeploy": "npm run build",
+- "deploy": "gh-pages -d build",
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  The predeploy script will run automatically before deploy is run.
 
 If you are deploying to a GitHub user page instead of a project page you'll need to make two additional modifications:
 
 First, change your repository's source branch to be any branch other than master.
 Additionally, tweak your package.json scripts to push deployments to master:
-  "scripts": {
-    "predeploy": "npm run build",
--   "deploy": "gh-pages -d build",
-+   "deploy": "gh-pages -b master -d build",
-Step 3: Deploy the site by running npm run deploy
-Then run:
+"scripts": {
+"predeploy": "npm run build",
+
+- "deploy": "gh-pages -d build",
+
+* "deploy": "gh-pages -b master -d build",
+  Step 3: Deploy the site by running npm run deploy
+  Then run:
 
 npm run deploy
 Step 4: Ensure your project’s settings use gh-pages
@@ -1669,8 +1690,8 @@ This is important because Linux (the operating system used by Heroku) is case se
 If you exclude or ignore necessary files from the package you will see a error similar this one:
 
 remote: Could not find a required file.
-remote:   Name: `index.html`
-remote:   Searched in: /tmp/build_a2875fc163b209225122d68916f1d4df/public
+remote: Name: `index.html`
+remote: Searched in: /tmp/build_a2875fc163b209225122d68916f1d4df/public
 remote:
 remote: npm ERR! Linux 3.13.0-105-generic
 remote: npm ERR! argv "/tmp/build_a2875fc163b209225122d68916f1d4df/.heroku/node/bin/node" "/tmp/build_a2875fc163b209225122d68916f1d4df/.heroku/node/bin/npm" "run" "build"
@@ -1693,9 +1714,9 @@ Set yarn build as the build command and build as the publish directory
 Click Deploy site
 Support for client-side routing:
 
-To support pushState, make sure to create a public/_redirects file with the following rewrite rules:
+To support pushState, make sure to create a public/\_redirects file with the following rewrite rules:
 
-/*  /index.html  200
+/\* /index.html 200
 When you build the project, Create React App will place the public folder contents into the build output.
 
 Now
@@ -1710,7 +1731,7 @@ Move into the build directory by running cd build.
 Run now --name your-project-name from within the build directory. You will see a now.sh URL in your output like this:
 
 > Ready! https://your-project-name-tpspyhtdtk.now.sh (copied to clipboard)
-Paste that URL into your browser when the build is complete, and you will see your deployed app.
+> Paste that URL into your browser when the build is complete, and you will see your deployed app.
 
 Details are available in this article.
 
@@ -1723,22 +1744,23 @@ Install the Surge CLI if you haven’t already by running npm install -g surge. 
 When asked about the project path, make sure to specify the build folder, for example:
 
        project path: /path/to/project/build
+
 Note that in order to support routers that use HTML5 pushState API, you may want to rename the index.html in your build folder to 200.html before deploying to Surge. This ensures that every URL falls back to that file.
 
 Advanced Configuration
 You can adjust various development and production settings by setting environment variables in your shell or with .env.
 
-Variable	Development	Production	Usage
-BROWSER	✅	❌	By default, Create React App will open the default system browser, favoring Chrome on macOS. Specify a browser to override this behavior, or set it to none to disable it completely. If you need to customize the way the browser is launched, you can specify a node script instead. Any arguments passed to npm start will also be passed to this script, and the url where your app is served will be the last argument. Your script's file name must have the .js extension.
-HOST	✅	❌	By default, the development web server binds to localhost. You may use this variable to specify a different host.
-PORT	✅	❌	By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port.
-HTTPS	✅	❌	When set to true, Create React App will run the development server in https mode.
-PUBLIC_URL	❌	✅	Create React App assumes your application is hosted at the serving web server's root or a subpath as specified in package.json (homepage). Normally, Create React App ignores the hostname. You may use this variable to force assets to be referenced verbatim to the url you provide (hostname included). This may be particularly useful when using a CDN to host your application.
-CI	🔶	✅	When set to true, Create React App treats warnings as failures in the build. It also makes the test runner non-watching. Most CIs set this flag by default.
-REACT_EDITOR	✅	❌	When an app crashes in development, you will see an error overlay with clickable stack trace. When you click on it, Create React App will try to determine the editor you are using based on currently running processes, and open the relevant source file. You can send a pull request to detect your editor of choice. Setting this environment variable overrides the automatic detection. If you do it, make sure your systems PATH environment variable points to your editor’s bin folder. You can also set it to none to disable it completely.
-CHOKIDAR_USEPOLLING	✅	❌	When set to true, the watcher runs in polling mode, as necessary inside a VM. Use this option if npm start isn't detecting changes.
-GENERATE_SOURCEMAP	❌	✅	When set to false, source maps are not generated for a production build. This solves OOM issues on some smaller machines.
-NODE_PATH	✅	✅	Same as NODE_PATH in Node.js, but only relative folders are allowed. Can be handy for emulating a monorepo setup by setting NODE_PATH=src.
+Variable Development Production Usage
+BROWSER ✅ ❌ By default, Create React App will open the default system browser, favoring Chrome on macOS. Specify a browser to override this behavior, or set it to none to disable it completely. If you need to customize the way the browser is launched, you can specify a node script instead. Any arguments passed to npm start will also be passed to this script, and the url where your app is served will be the last argument. Your script's file name must have the .js extension.
+HOST ✅ ❌ By default, the development web server binds to localhost. You may use this variable to specify a different host.
+PORT ✅ ❌ By default, the development web server will attempt to listen on port 3000 or prompt you to attempt the next available port. You may use this variable to specify a different port.
+HTTPS ✅ ❌ When set to true, Create React App will run the development server in https mode.
+PUBLIC_URL ❌ ✅ Create React App assumes your application is hosted at the serving web server's root or a subpath as specified in package.json (homepage). Normally, Create React App ignores the hostname. You may use this variable to force assets to be referenced verbatim to the url you provide (hostname included). This may be particularly useful when using a CDN to host your application.
+CI 🔶 ✅ When set to true, Create React App treats warnings as failures in the build. It also makes the test runner non-watching. Most CIs set this flag by default.
+REACT_EDITOR ✅ ❌ When an app crashes in development, you will see an error overlay with clickable stack trace. When you click on it, Create React App will try to determine the editor you are using based on currently running processes, and open the relevant source file. You can send a pull request to detect your editor of choice. Setting this environment variable overrides the automatic detection. If you do it, make sure your systems PATH environment variable points to your editor’s bin folder. You can also set it to none to disable it completely.
+CHOKIDAR_USEPOLLING ✅ ❌ When set to true, the watcher runs in polling mode, as necessary inside a VM. Use this option if npm start isn't detecting changes.
+GENERATE_SOURCEMAP ❌ ✅ When set to false, source maps are not generated for a production build. This solves OOM issues on some smaller machines.
+NODE_PATH ✅ ✅ Same as NODE_PATH in Node.js, but only relative folders are allowed. Can be handy for emulating a monorepo setup by setting NODE_PATH=src.
 Troubleshooting
 npm start doesn’t detect changes
 When you save a file while npm start is running, the browser should refresh with the updated code.
@@ -1802,7 +1824,6 @@ This will only work for locales that have been explicitly imported before.
 
 npm run build fails to minify
 Some third-party packages don't compile their code to ES5 before publishing to npm. This often causes problems in the ecosystem because neither browsers (except for most modern versions) nor some tools currently support all ES6 features. We recommend to publish code on npm as ES5 at least for a few more years.
-
 
 To resolve this:
 Open an issue on the dependency's issue tracker and ask that the package be published pre-compiled.

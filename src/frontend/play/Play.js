@@ -1,7 +1,7 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import Loading from "../common/loading/Loading";
-import "./Play.css";
+// import { Redirect } from "react-router-dom";
+// import Loading from "../common/loading/Loading";
+// import "./Play.css";
 
 export default class Play extends React.Component {
   constructor() {

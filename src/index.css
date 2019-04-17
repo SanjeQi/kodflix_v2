@@ -10,7 +10,8 @@ body {
   height: 100%;
   overflow-y: auto;
   text-align: center;
-  background-color: #2f333d;
+  background-color: #236b3b;
+  /* background-color: #2f333d; */
   color: white;
 }
 

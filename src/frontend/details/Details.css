@@ -10,7 +10,7 @@
 .details-content {
   background: linear-gradient(to bottom, black, transparent);
   padding: 30px 120px;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .details-content-title {

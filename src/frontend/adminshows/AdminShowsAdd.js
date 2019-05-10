@@ -14,8 +14,35 @@ export default class AdminShowsAdd extends Component {
     };
   }
 
+  getFormattedValue(value) {
+    return typeof value === "object" ? JSON.stringify(value) : value;
+  }
   handleSubmit(event) {
     event.preventDefault();
+    const data = new FormData();
+    Object.keys(this.state).forEach(input => {
+      let value = this.state[input];
+      data.append(input, this.getFormattedValue(value));
+    });
+    //data.append('title', this.getFormattedValue(this.state.title))
+    fetch("/rest/show/add", {
+      method: "POST",
+      body: data
+    }).then(response => {
+      response.json();
+    });
+    this.reset();
+  }
+
+  reset() {
+    this.setState({
+      title: "",
+      id: "",
+      creator: ["", ""],
+      stars: ["", "", ""],
+      videoId: "",
+      description: ""
+    });
   }
 
   onInputChange(name, value) {
@@ -39,7 +66,7 @@ export default class AdminShowsAdd extends Component {
     return (
       <div className="add-show-container">
         <div className="add-show-title">Adding New Shows</div>
-        <form onSubmit={this.handleSubmit.bind(this)} className="add-form">
+        <form onSubmit={e => this.handleSubmit(e)} className="add-form">
           <ul>
             <li className="form-section">
               <label>Add TV Show Title: </label>

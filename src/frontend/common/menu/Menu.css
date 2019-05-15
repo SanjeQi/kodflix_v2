@@ -1,37 +1,81 @@
-@import "./Menu-panel.css";
-
 .menu {
-  position: absolute;
+  transition: left 1s ease;
+  position: fixed;
+  top: 0px;
+  left: -30%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 5;
+  width: 30%;
+}
+
+.menu.toggle-menu {
+  left: 0;
+}
+
+svg.btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  width: 40px;
+  padding: 5px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+svg:hover {
+  fill: white;
+  transform: scale(1.1);
+}
+
+.options {
+  color: white;
+  position: relative;
+  width: 100%;
+  padding: 5px 15px;
+  top: 80px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
-  width: auto;
-}
-
-.menu.is-visible {
-  width: 100%;
-}
-
-.menu-toggle {
-  background-color: transparent;
-  position: absolute;
-  border: none;
-  width: 64px;
-  padding-top: 10px;
-  padding-left: 10px;
-  left: -100px;
+  background: rgba(0, 0, 0, 0.7);
   z-index: 2;
-  outline: none;
-  animation: show-menu-button 0.5s ease 0.3s 1 forwards;
+  transition: all 1.5s ease;
 }
 
-@keyframes show-menu-button {
-  0% {
-    left: -100px;
-    transform: rotate(0deg);
+@media only screen and (max-width: 600px) {
+  .btn {
+    height: 30px;
+    left: 15px;
   }
-  100% {
-    left: 0px;
-    transform: rotate(360deg);
+  svg:hover {
+    transform: scale(1.1);
+    fill: white;
+  }
+  .toggle-menu {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .btn {
+    height: 25px;
+    left: 10px;
+  }
+  svg:hover {
+    transform: scale(1.1);
+    fill: white;
+  }
+  .toggle-menu {
+    width: 50%;
   }
 }

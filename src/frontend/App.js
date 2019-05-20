@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
+import ReactGA from "react-ga";
 
 import Gallery from "./gallery/Gallery";
 import Details from "./details/Details";
@@ -12,6 +13,16 @@ import AdminShows from "../frontend/adminshows/AdminShows.js";
 import "./App.css";
 
 class App extends Component {
+  constructor({ history, location }) {
+    super();
+    ReactGA.initialize("UA-121194998-1");
+    this.trackPageView(location);
+    history.listen(location => this.trackPageView(location));
+  }
+
+  trackPageView(location) {
+    ReactGA.pageview(location.pathname + location.search + location.hash);
+  }
   render() {
     return (
       <div className="App">

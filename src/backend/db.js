@@ -1,22 +1,19 @@
 const MongoClient = require("mongodb").MongoClient;
-const assert = require("assert");
 require("dotenv").config();
-
-const url =
-  process.env.NODE_ENV === "production"
-    ? process.env.DB_URL_PRD
-    : process.env.DB_URL_DEV;
-const dbName = url.substr(url.lastIndexOf("/") + 1);
-
-module.exports = { connect };
+const databaseUrl = process.env[`DB_URL_${process.env.NODE_ENV}`];
+const databaseName = databaseUrl.substr(databaseUrl.lastIndexOf("kodflix_v2"));
 
 function connect() {
   return new Promise((resolve, reject) => {
-    MongoClient.connect(url, function(err, client) {
-      assert.equal(null, err);
-      console.log("Connected successfully to server");
-      const dbo = client.db(dbName);
+    MongoClient.connect(databaseUrl, { useNewUrlParser: true }, function(
+      err,
+      db
+    ) {
+      if (err) reject(err);
+      const dbo = db.db(databaseName);
       resolve(dbo);
     });
   });
 }
+
+module.exports = connect;

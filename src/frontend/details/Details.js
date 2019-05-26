@@ -1,49 +1,69 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import Loading from "../common/loading/Loading";
+import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import "./Details.css";
+import Loading from "../Icons/LoadingIcon/Loading.js";
+import PlayBtn from "../Icons/PlayIcon/PlayIcon.js";
 
-export default class Details extends React.Component {
+export default class Details extends Component {
   constructor() {
     super();
-    this.state = { show: {} };
+    this.state = {
+      show: null,
+      redirect: false
+    };
   }
 
   componentDidMount() {
-    let showId = this.props.match.params.showId;
-    fetch(`/rest/shows/${showId}`)
-      .then(response => response.json())
-      .then(show => this.setState({ show }));
+    let id = this.props.match.params.id;
+    fetch(`/rest/shows/${id}`)
+      .then(res => (res.status === 404 ? null : res.json()))
+      .then(show => {
+        if (show) {
+          this.setState({ show });
+        } else {
+          this.setState({ redirect: true });
+        }
+      });
   }
 
   render() {
-    let show = this.state.show;
-    if (show) {
-      return show.id ? <DetailsContent show={show} /> : <Loading />;
-    } else {
+    let { show, redirect } = this.state;
+
+    if (redirect) {
       return <Redirect to="/not-found" />;
     }
-  }
-}
-
-function DetailsContent({ show }) {
-  return (
-    <div
-      className="details"
-      style={{
-        backgroundImage: `url(${require(`../common/images/wallpapers/${
-          show.id
-        }.jpg`)})`
-      }}
-    >
-      <div className="details-content">
-        <h1 className="details-content-title">{show.title}</h1>
-        <h3 className="details-content-synopsis">{show.synopsis}</h3>
+    if (!show) {
+      return (
         <div>
-          <Link to={`/${show.id}/play`} className="details-play" />
+          <Loading />
+        </div>
+      );
+    }
+
+    let imageUrl = require(`../../Common/Images/BackgroundImages/${
+      show.id
+    }-background.jpg`);
+
+    return (
+      <div
+        className="synopsis-container"
+        style={{ backgroundImage: `url(${imageUrl})` }}
+      >
+        <div className="synopsis-title">{show.alt}</div>
+        <hr />
+        <div className="description">
+          <div>{show.description}</div>
+          <div className="production-crew-info">
+            {show.creator.length === 1
+              ? `Creator: ${show.creator[0]}`
+              : `Creators: ${show.creator.join(", ")}`}
+            <div>Stars: {show.stars.join(", ")}</div>
+          </div>
+          <Link to={`/${show.id}/play`}>
+            <PlayBtn />
+          </Link>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
